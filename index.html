@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="money-counter">Moolah: $<span id="moolah">0</span></div>
+  <div class="money-counter" id="moolah-counter">Moolah: $<span id="moolah">0</span></div>
 
   <div class="scene">
     <div class="dice" id="dice">
@@ -22,6 +22,9 @@
   </div>
 
   <button id="rollBtn" onclick="rollDice()">ROLL DAT DICE</button>
+
+  <div id="confetti-container"></div>
+
   <script src="script.js"></script>
 </body>
 </html>

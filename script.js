@@ -14,9 +14,12 @@ function rollDice() {
 
   dice.style.transform = `rotateX(${randX}deg) rotateY(${randY}deg)`;
 
-  const earnings = Math.floor(Math.random() * 6) + 1;
-  moolah += earnings;
-  document.getElementById("moolah").textContent = moolah;
+  // Wait for the spin animation to finish (1 second)
+  setTimeout(() => {
+    const earnings = Math.floor(Math.random() * 6) + 1;
+    moolah += earnings;
+    document.getElementById("moolah").textContent = moolah;
+  }, 1000);
 
   // Start cooldown: dim button + countdown
   button.classList.add('dimmed');
@@ -36,12 +39,3 @@ function rollDice() {
     }
   }, 10);
 }
-
-function updateDiceSizeVar() {
-  const dice = document.getElementById("dice");
-  const diceWidth = dice.offsetWidth;
-  dice.style.setProperty('--half-size', `${diceWidth / 2}px`);
-}
-
-window.addEventListener('load', updateDiceSizeVar);
-window.addEventListener('resize', updateDiceSizeVar);

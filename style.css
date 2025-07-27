@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+.money-counter {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: yellow;
+  font-size: 0.75rem;
+  z-index: 1000;
+}
+
+#menu-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1rem;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.scene-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene {
+  width: 90px;
+  height: 90px;
+  perspective: 1000px;
+}
+
+.dice {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.face {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.dot {
+  width: 12%;
+  height: 12%;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.center        { top: 44%; left: 44%; }
+.top-left      { top: 15%; left: 15%; }
+.top-right     { top: 15%; right: 15%; }
+.middle-left   { top: 44%; left: 15%; }
+.middle-right  { top: 44%; right: 15%; }
+.bottom-left   { bottom: 15%; left: 15%; }
+.bottom-right  { bottom: 15%; right: 15%; }
+
+.one   { transform: rotateY(0deg) translateZ(45px); }
+.two   { transform: rotateY(180deg) translateZ(45px); }
+.three { transform: rotateY(90deg) translateZ(45px); }
+.four  { transform: rotateY(-90deg) translateZ(45px); }
+.five  { transform: rotateX(90deg) translateZ(45px); }
+.six   { transform: rotateX(-90deg) translateZ(45px); }
+
+#rollButton {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  padding: 14px 20px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#rollButton:disabled {
+  background: #ccc;
+  color: #555;
+}
+
+#menu-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #222;
+  padding: 20px;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  z-index: 2000;
+}
+
+.hidden {
+  display: none;
+}

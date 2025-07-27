@@ -25,7 +25,7 @@ body, html {
   background: rgba(0,0,0,0.5);
   padding: 5px 15px;
   border-radius: 12px;
-  pointer-events: none; /* So it doesn’t block clicks */
+  pointer-events: none;
   user-select: none;
 }
 
@@ -47,7 +47,7 @@ body, html {
   transform-style: preserve-3d;
   transform: rotateX(30deg) rotateY(30deg);
   transition: transform 1s;
-  --half-size: 150px; /* fallback */
+  --half-size: 150px;
 }
 
 .face {
@@ -67,7 +67,6 @@ body, html {
   position: absolute;
 }
 
-/* Dot Positions */
 .center        { top: 44%; left: 44%; }
 .top-left      { top: 15%; left: 15%; }
 .top-right     { top: 15%; right: 15%; }
@@ -76,7 +75,6 @@ body, html {
 .bottom-left   { bottom: 15%; left: 15%; }
 .bottom-right  { bottom: 15%; right: 15%; }
 
-/* Faces with dynamic translateZ */
 .one   { transform: rotateY(0deg) translateZ(var(--half-size)); }
 .two   { transform: rotateY(180deg) translateZ(var(--half-size)); }
 .three { transform: rotateY(90deg) translateZ(var(--half-size)); }
@@ -86,7 +84,7 @@ body, html {
 
 button {
   font-family: 'Press Start 2P', cursive;
-  font-size: 1.25rem; /* bigger */
+  font-size: 1.25rem;
   padding: 18px 40px;
   border: 3px solid black;
   border-radius: 12px;
@@ -111,5 +109,29 @@ button.dimmed {
 
 button:hover:not(.dimmed) {
   background: #eee;
-  transform: translate(-50%, -2px); /* keep center + hover move */
+  transform: translate(-50%, -2px);
+}
+
+/* 3D Confetti styles */
+#confetti-container {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  perspective: 800px;
+  overflow: visible;
+  z-index: 9999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  will-change: transform, opacity;
+  border-radius: 2px;
+  opacity: 1;
+  transform-style: preserve-3d;
 }

@@ -74,12 +74,13 @@ body {
 .bottom-right  { bottom: 15%; right: 15%; }
 
 /* Faces */
-.one   { transform: rotateY(0deg) translateZ(40vw); }
-.two   { transform: rotateY(180deg) translateZ(40vw); }
-.three { transform: rotateY(90deg) translateZ(40vw); }
-.four  { transform: rotateY(-90deg) translateZ(40vw); }
-.five  { transform: rotateX(90deg) translateZ(40vw); }
-.six   { transform: rotateX(-90deg) translateZ(40vw); }
+.one   { transform: rotateY(0deg) translateZ(120px); }
+.two   { transform: rotateY(180deg) translateZ(120px); }
+.three { transform: rotateY(90deg) translateZ(120px); }
+.four  { transform: rotateY(-90deg) translateZ(120px); }
+.five  { transform: rotateX(90deg) translateZ(120px); }
+.six   { transform: rotateX(-90deg) translateZ(120px); }
+
 
 /* Button styling */
 button {

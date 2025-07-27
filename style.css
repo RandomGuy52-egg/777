@@ -14,6 +14,11 @@ body {
 .money-counter {
   font-size: 1rem;
   margin-bottom: 20px;
+
+  /* Yellow + on top */
+  color: yellow;
+  position: relative;
+  z-index: 10;
 }
 
 .scene {
@@ -34,7 +39,6 @@ body {
   transition: transform 1s;
   margin: 0 auto;
 
-  /* NEW: CSS variable for half size in pixels */
   --half-size: 150px; /* fallback */
 }
 
@@ -64,7 +68,7 @@ body {
 .bottom-left   { bottom: 15%; left: 15%; }
 .bottom-right  { bottom: 15%; right: 15%; }
 
-/* Faces with dynamic translateZ using CSS variable */
+/* Faces with dynamic translateZ */
 .one   { transform: rotateY(0deg) translateZ(var(--half-size)); }
 .two   { transform: rotateY(180deg) translateZ(var(--half-size)); }
 .three { transform: rotateY(90deg) translateZ(var(--half-size)); }
@@ -81,11 +85,20 @@ button {
   background: white;
   color: black;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out, opacity 0.3s;
   max-width: 90vw;
+
+  position: relative;
+  z-index: 10; /* on top */
 }
 
-button:hover {
+button.dimmed {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+button:hover:not(.dimmed) {
   background: #eee;
   transform: translateY(-2px);
 }

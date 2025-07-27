@@ -1,18 +1,6 @@
 let moolah = 0;
 let canRoll = true;
 
-function updateConfettiPosition() {
-  const dice = document.getElementById('dice');
-  const confettiContainer = document.getElementById('confetti-container');
-
-  const rect = dice.getBoundingClientRect();
-
-  confettiContainer.style.width = rect.width + 'px';
-  confettiContainer.style.height = rect.height + 'px';
-  confettiContainer.style.top = (rect.top + rect.height / 2) + 'px';
-  confettiContainer.style.left = (rect.left + rect.width / 2) + 'px';
-}
-
 function rollDice() {
   if (!canRoll) return;
 
@@ -31,7 +19,6 @@ function rollDice() {
     moolah += earnings;
     document.getElementById("moolah").textContent = moolah;
 
-    updateConfettiPosition();
     create3DConfetti();
   }, 1000);
 
@@ -68,7 +55,7 @@ function create3DConfetti() {
 
     container.appendChild(confetti);
 
-    const translateX = (Math.random() - 0.5) * 800; // wider spread
+    const translateX = (Math.random() - 0.5) * 800;
     const translateY = (Math.random() - 0.5) * 600;
     const translateZ = (Math.random() - 0.5) * 800;
 

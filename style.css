@@ -1,15 +1,17 @@
-/* Reset + global */
-html, body {
+* {
+  box-sizing: border-box;
+}
+
+body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* no scrollbars */
-  height: 100%;
-  width: 100%;
+  overflow: hidden;
   background: #111;
-  color: white;
   font-family: 'Press Start 2P', cursive;
+  color: white;
   text-align: center;
-  user-select: none;
+  height: 100vh;
+  width: 100vw;
 }
 
 .money-counter {
@@ -18,19 +20,18 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
   color: yellow;
-  font-size: 1rem;
-  z-index: 10000;
+  font-size: 0.75rem;
+  z-index: 1000;
 }
 
 .scene-wrapper {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 200px;   /* smaller dice size */
-  height: 200px;
+  width: min(60vw, 200px);
+  height: min(60vw, 200px);
   transform: translate(-50%, -50%);
-  overflow: visible;  /* allow confetti to spill outside */
-  z-index: 1;
+  overflow: visible;
 }
 
 .scene {
@@ -38,14 +39,12 @@ html, body {
   height: 100%;
   perspective: 800px;
   position: relative;
-  overflow: visible; /* needed for confetti */
 }
 
 .dice {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0; left: 0;
+  position: relative;
   transform-style: preserve-3d;
   transform: rotateX(30deg) rotateY(30deg);
   transition: transform 1s;
@@ -77,85 +76,42 @@ html, body {
 .bottom-left   { bottom: 15%; left: 15%; }
 .bottom-right  { bottom: 15%; right: 15%; }
 
-/* Faces with smaller translateZ */
-.one   { transform: rotateY(0deg) translateZ(60px); }
-.two   { transform: rotateY(180deg) translateZ(60px); }
-.three { transform: rotateY(90deg) translateZ(60px); }
-.four  { transform: rotateY(-90deg) translateZ(60px); }
-.five  { transform: rotateX(90deg) translateZ(60px); }
-.six   { transform: rotateX(-90deg) translateZ(60px); }
+/* 3D Faces */
+.one   { transform: rotateY(0deg) translateZ(50px); }
+.two   { transform: rotateY(180deg) translateZ(50px); }
+.three { transform: rotateY(90deg) translateZ(50px); }
+.four  { transform: rotateY(-90deg) translateZ(50px); }
+.five  { transform: rotateX(90deg) translateZ(50px); }
+.six   { transform: rotateX(-90deg) translateZ(50px); }
 
-/* Confetti container */
-#confetti-container {
-  pointer-events: none;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  perspective: 800px;
-  overflow: visible;
-  top: 50%;
+#rollBtn {
+  position: fixed;
+  bottom: 20px;
   left: 50%;
-  transform-style: preserve-3d;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-}
-
-/* Confetti pieces */
-.confetti-piece {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background-color: red;
-  border-radius: 2px;
-  will-change: transform, opacity;
-}
-
-/* Button styling */
-button {
+  transform: translateX(-50%);
   font-family: 'Press Start 2P', cursive;
-  font-size: 1rem;
-  padding: 18px 36px;
+  font-size: 0.8rem;
+  padding: 16px 32px;
   border: 3px solid black;
   border-radius: 10px;
   background: white;
   color: black;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
-  max-width: 90vw;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10000;
-  user-select: none;
+  z-index: 1000;
+  transition: background 0.2s;
 }
 
-button:hover {
-  background: #eee;
-  transform: translateX(-50%) translateY(-2px);
-}
-
-button.dimmed {
+#rollBtn.disabled {
   background: #ccc;
-  color: #666;
   cursor: not-allowed;
-  pointer-events: none;
 }
 
-/* Responsive */
-@media (max-width: 400px) {
-  .scene-wrapper {
-    width: 90vw;
-    height: 90vw;
-  }
-
-  #confetti-container {
-    width: 90vw;
-    height: 90vw;
-  }
-
-  button {
-    font-size: 0.85rem;
-    padding: 14px 28px;
-  }
+#confetti-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
 }

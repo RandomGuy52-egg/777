@@ -8,43 +8,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <div class="money-counter">Moolah: $<span id="moolah">0</span></div>
+
   <div class="scene">
     <div class="dice" id="dice">
-      <div class="face one">
-        <div class="dot center"></div>
-      </div>
-      <div class="face two">
-        <div class="dot top-left"></div>
-        <div class="dot bottom-right"></div>
-      </div>
-      <div class="face three">
-        <div class="dot top-left"></div>
-        <div class="dot center"></div>
-        <div class="dot bottom-right"></div>
-      </div>
-      <div class="face four">
-        <div class="dot top-left"></div>
-        <div class="dot top-right"></div>
-        <div class="dot bottom-left"></div>
-        <div class="dot bottom-right"></div>
-      </div>
-      <div class="face five">
-        <div class="dot top-left"></div>
-        <div class="dot top-right"></div>
-        <div class="dot center"></div>
-        <div class="dot bottom-left"></div>
-        <div class="dot bottom-right"></div>
-      </div>
-      <div class="face six">
-        <div class="dot top-left"></div>
-        <div class="dot middle-left"></div>
-        <div class="dot bottom-left"></div>
-        <div class="dot top-right"></div>
-        <div class="dot middle-right"></div>
-        <div class="dot bottom-right"></div>
-      </div>
+      <div class="face one"><div class="dot center"></div></div>
+      <div class="face two"><div class="dot top-left"></div><div class="dot bottom-right"></div></div>
+      <div class="face three"><div class="dot top-left"></div><div class="dot center"></div><div class="dot bottom-right"></div></div>
+      <div class="face four"><div class="dot top-left"></div><div class="dot top-right"></div><div class="dot bottom-left"></div><div class="dot bottom-right"></div></div>
+      <div class="face five"><div class="dot top-left"></div><div class="dot top-right"></div><div class="dot center"></div><div class="dot bottom-left"></div><div class="dot bottom-right"></div></div>
+      <div class="face six"><div class="dot top-left"></div><div class="dot middle-left"></div><div class="dot bottom-left"></div><div class="dot top-right"></div><div class="dot middle-right"></div><div class="dot bottom-right"></div></div>
     </div>
   </div>
+
   <button onclick="rollDice()">ROLL DAT DICE</button>
   <script src="script.js"></script>
 </body>

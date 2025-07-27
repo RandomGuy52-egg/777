@@ -55,9 +55,9 @@ function create3DConfetti() {
 
     container.appendChild(confetti);
 
-    const translateX = (Math.random() - 0.5) * 800;
-    const translateY = (Math.random() - 0.5) * 600;
-    const translateZ = (Math.random() - 0.5) * 800;
+    const translateX = (Math.random() - 0.5) * 300;
+    const translateY = (Math.random() - 0.5) * 300;
+    const translateZ = (Math.random() - 0.5) * 300;
 
     const rotateX = Math.random() * 720;
     const rotateY = Math.random() * 720;

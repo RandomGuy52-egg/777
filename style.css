@@ -30,11 +30,12 @@ body {
   max-width: 300px;
   max-height: 300px;
   perspective: 800px;
-  margin: 0 auto;
+  margin: 40px auto; /* Added margin to avoid clipping */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: visible; /* let confetti overflow */
 }
 
 .dice {
@@ -73,14 +74,13 @@ body {
 .bottom-left   { bottom: 15%; left: 15%; }
 .bottom-right  { bottom: 15%; right: 15%; }
 
-/* Faces */
+/* Faces with fixed translateZ for size */
 .one   { transform: rotateY(0deg) translateZ(120px); }
 .two   { transform: rotateY(180deg) translateZ(120px); }
 .three { transform: rotateY(90deg) translateZ(120px); }
 .four  { transform: rotateY(-90deg) translateZ(120px); }
 .five  { transform: rotateX(90deg) translateZ(120px); }
 .six   { transform: rotateX(-90deg) translateZ(120px); }
-
 
 /* Button styling */
 button {
@@ -115,12 +115,12 @@ button.dimmed {
   pointer-events: none;
 }
 
-/* Confetti container */
+/* Confetti container bigger than dice */
 #confetti-container {
   pointer-events: none;
-  position: absolute;      /* locked to dice */
-  width: 300px;
-  height: 300px;
+  position: absolute;
+  width: 350px;   /* bigger than dice size */
+  height: 350px;
   perspective: 800px;
   overflow: visible;
   z-index: 9999;

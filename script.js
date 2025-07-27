@@ -4,10 +4,19 @@ let canRoll = true;
 function rollDice() {
   if (!canRoll) return;
 
-  canRoll = false;
-
   const dice = document.getElementById("dice");
-  const button = document.getElementById("rollBtn");
+  const rollBtn = document.getElementById("rollBtn");
+  const confettiContainer = document.getElementById("confetti-container");
+
+  canRoll = false;
+  rollBtn.classList.add("disabled");
+  rollBtn.textContent = "2.00";
+
+  let countdown = 2.00;
+  const interval = setInterval(() => {
+    countdown -= 0.1;
+    rollBtn.textContent = countdown.toFixed(2);
+  }, 100);
 
   const randX = Math.floor(Math.random() * 4 + 1) * 90;
   const randY = Math.floor(Math.random() * 4 + 1) * 90;
@@ -15,65 +24,46 @@ function rollDice() {
   dice.style.transform = `rotateX(${randX}deg) rotateY(${randY}deg)`;
 
   setTimeout(() => {
+    clearInterval(interval);
     const earnings = Math.floor(Math.random() * 6) + 1;
     moolah += earnings;
     document.getElementById("moolah").textContent = moolah;
 
-    create3DConfetti();
-  }, 1000);
+    rollBtn.textContent = "ROLL DAT DICE";
+    rollBtn.classList.remove("disabled");
+    canRoll = true;
 
-  button.classList.add('dimmed');
-
-  let countdown = 2.00;
-  button.textContent = countdown.toFixed(2);
-
-  const interval = setInterval(() => {
-    countdown -= 0.01;
-    if (countdown <= 0) {
-      clearInterval(interval);
-      button.textContent = "ROLL DAT DICE";
-      button.classList.remove('dimmed');
-      canRoll = true;
-    } else {
-      button.textContent = countdown.toFixed(2);
-    }
-  }, 10);
+    launchConfetti(confettiContainer);
+  }, 2000);
 }
 
-function create3DConfetti() {
-  const container = document.getElementById('confetti-container');
-  const colors = ['#f94144', '#f3722c', '#f9844a', '#f9c74f', '#90be6d', '#43aa8b', '#577590'];
-  const count = 30;
+function launchConfetti(container) {
+  container.innerHTML = "";
 
-  for (let i = 0; i < count; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti-piece');
-    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement("div");
+    confetti.style.position = "absolute";
+    confetti.style.width = "6px";
+    confetti.style.height = "6px";
+    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    confetti.style.left = "50%";
+    confetti.style.top = "50%";
+    confetti.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+    confetti.style.opacity = 1;
+    confetti.style.borderRadius = "2px";
 
-    confetti.style.left = '50%';
-    confetti.style.top = '50%';
-
-    container.appendChild(confetti);
-
-    const translateX = (Math.random() - 0.5) * 300;
-    const translateY = (Math.random() - 0.5) * 300;
-    const translateZ = (Math.random() - 0.5) * 300;
-
-    const rotateX = Math.random() * 720;
-    const rotateY = Math.random() * 720;
-    const rotateZ = Math.random() * 720;
+    const dx = (Math.random() - 0.5) * 200;
+    const dy = (Math.random() - 0.5) * 200;
 
     confetti.animate([
-      { transform: 'translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)', opacity: 1 },
-      { transform: `translate3d(${translateX}px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`, opacity: 0 }
+      { transform: `translate(-50%, -50%)`, opacity: 1 },
+      { transform: `translate(${dx}px, ${dy}px)`, opacity: 0 }
     ], {
-      duration: 2000,
-      easing: 'ease-out',
-      fill: 'forwards'
+      duration: 1000 + Math.random() * 500,
+      easing: "ease-out",
+      fill: "forwards"
     });
 
-    setTimeout(() => {
-      confetti.remove();
-    }, 2000);
+    container.appendChild(confetti);
   }
 }

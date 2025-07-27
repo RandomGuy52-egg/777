@@ -26,10 +26,10 @@ html, body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 320px;  /* controls dice size + confetti size */
-  height: 320px;
+  width: 200px;   /* smaller dice size */
+  height: 200px;
   transform: translate(-50%, -50%);
-  overflow: hidden; /* prevent clipping & scroll */
+  overflow: visible;  /* allow confetti to spill outside */
   z-index: 1;
 }
 
@@ -77,20 +77,20 @@ html, body {
 .bottom-left   { bottom: 15%; left: 15%; }
 .bottom-right  { bottom: 15%; right: 15%; }
 
-/* Faces with fixed translateZ for size */
-.one   { transform: rotateY(0deg) translateZ(120px); }
-.two   { transform: rotateY(180deg) translateZ(120px); }
-.three { transform: rotateY(90deg) translateZ(120px); }
-.four  { transform: rotateY(-90deg) translateZ(120px); }
-.five  { transform: rotateX(90deg) translateZ(120px); }
-.six   { transform: rotateX(-90deg) translateZ(120px); }
+/* Faces with smaller translateZ */
+.one   { transform: rotateY(0deg) translateZ(60px); }
+.two   { transform: rotateY(180deg) translateZ(60px); }
+.three { transform: rotateY(90deg) translateZ(60px); }
+.four  { transform: rotateY(-90deg) translateZ(60px); }
+.five  { transform: rotateX(90deg) translateZ(60px); }
+.six   { transform: rotateX(-90deg) translateZ(60px); }
 
 /* Confetti container */
 #confetti-container {
   pointer-events: none;
   position: absolute;
-  width: 320px;
-  height: 320px;
+  width: 200px;
+  height: 200px;
   perspective: 800px;
   overflow: visible;
   top: 50%;

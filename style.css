@@ -1,0 +1,72 @@
+.scene {
+  width: 150px;
+  height: 150px;
+  perspective: 800px;
+  margin: 100px auto 20px;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(30deg) rotateY(30deg);
+  transition: transform 1s;
+  margin: 0 auto;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.center        { top: 42px; left: 42px; }
+.top-left      { top: 16px; left: 16px; }
+.top-right     { top: 16px; right: 16px; }
+.middle-left   { top: 42px; left: 16px; }
+.middle-right  { top: 42px; right: 16px; }
+.bottom-left   { bottom: 16px; left: 16px; }
+.bottom-right  { bottom: 16px; right: 16px; }
+
+.one  { transform: rotateY(  0deg) translateZ(50px); }
+.two  { transform: rotateY(180deg) translateZ(50px); }
+.three{ transform: rotateY( 90deg) translateZ(50px); }
+.four { transform: rotateY(-90deg) translateZ(50px); }
+.five { transform: rotateX( 90deg) translateZ(50px); }
+.six  { transform: rotateX(-90deg) translateZ(50px); }
+
+button {
+  display: block;
+  margin: 20px auto;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 10px 20px;
+  border: 3px solid black;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 2px 2px 0 black;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #eee;
+  transform: translateY(-2px);
+}
